@@ -1,0 +1,395 @@
+html, body{
+    margin:0;
+    border:0;
+    padding:0;
+/*    vertical-align: top;*/
+/*    background-color: rgb(47, 46, 46);*/
+/*    color:white;*/
+/*    font-family*/
+}
+
+ul{
+    list-style: none outside none;
+    color:white;
+    padding: 0;
+    margin: 0;
+}
+h2 {
+    display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+a {
+    color: #333;
+    opacity: 1;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+}
+p{
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 400;
+    color: rgba(51, 51, 51, 0.93);
+    color: white;
+    font-family: "Palanquin", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 0.9;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+}
+/*menu框 大框#menu_btn fixed 80*40
+三横线小框 inline-block 34*40 不起作用，menu被挤到大框下面看不见*/
+
+
+
+
+
+
+.pri-link {
+    font-family: "Palanquin", sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+    color: #D7E8EF;
+    white-space: nowrap;
+    -moz-transition: opacity 0.25s;
+    -o-transition: opacity 0.25s;
+    -webkit-transition: opacity 0.25s;
+    transition: opacity 0.25s;
+    cursor: pointer;
+}
+#nav-bar-scroll{
+    position: fixed;
+    height: 45px;
+    width: 100%;
+    right: 0;
+    left: 0;
+    top:0px;
+    overflow: hidden;
+    z-index: 3;
+    -moz-transition: height 0.45s;
+    -o-transition: height 0.45s;
+    -webkit-transition: height 0.45s;
+    transition: height 0.45s;
+}
+#profile-nav{
+    height: 45px;
+    width: 100%;
+    left: 0;
+    position: absolute;
+    top: -70px; /*出现与隐藏*/
+    z-index: 1;
+    text-align: center;
+    -moz-transition: top 0.5s;
+    -o-transition: top 0.5s;
+    -webkit-transition: top 0.5s;
+    transition: top 0.5s;
+    background-color: #65c5e8;
+}
+#profile-nav.visible {
+    top: 0px;
+}
+ul.pri-menu {
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    -ms-flex-pack: center;
+    flex-pack: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    justify-content: space-between;
+    -ms-flex-pack: justify;
+    flex-pack: justify;
+    margin: 0 auto;
+    max-width: 100%;
+    text-align: center;
+    width: 100%;
+}
+.pri-menu a {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: inline-block;
+   
+}
+#profile-nav .pri-menu li{
+    color: #000;
+    opacity: 0.9;
+    font-size: 10px;
+    position: relative;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 8px 5px;
+    position: relative;
+    text-align: center;
+    opacity: 1;
+    color: #fff;
+    white-space: nowrap;
+    -moz-transition: opacity 0.25s;
+    -o-transition: opacity 0.25s;
+    -webkit-transition: opacity 0.25s;
+    transition: opacity 0.25s;
+    cursor: pointer;
+}
+.pri-link {
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+    color: #D7E8EF;
+    white-space: nowrap;
+    -moz-transition: opacity 0.25s;
+    -o-transition: opacity 0.25s;
+    -webkit-transition: opacity 0.25s;
+    transition: opacity 0.25s;
+    cursor: pointer;
+}
+#profile-nav .pri-menu li img{
+    display: block;
+    width: 23px;
+    height: 23px;
+    margin: -3px auto 2px;
+}
+/*箭头*/
+#scrollup{
+        background: #777;
+        color:#eee;
+        font-size: 40px;
+        text-align: center;
+        text-decoration: none;
+        bottom:50px;
+        right:40px;
+        overflow: hidden;
+        width:46px;
+        height:46px;
+        border:none;
+        opacity:.8;
+        &:active{opacity:.7;}
+    }
+
+/*各个模块*/
+.bcolor0{
+    background-color: #E9E9E9;
+}
+.bcolor1{
+    background-color: #F6F6F6;
+}
+.prof-body{
+    padding: 60px 50px 25px;
+    position: relative;
+}
+.prof-body .section-title{
+    margin: 0 auto 15px;
+    color: #333;
+    font-size: 47px;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0.02em;
+}
+.prof-body .section-title a{
+    margin-top: -95px;
+    padding-top: 95px;
+}
+/*为了锚点能定位到往下拉一点*/
+.prof-body p{
+    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 400;
+    color: rgba(51, 51, 51, 0.93);
+}
+.profile-section{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    -ms-flex-pack: center;
+    flex-pack: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 0 25px;
+    width: 100%;
+}
+/*section 左右侧*/
+.profile-section .topic{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-flex: 1 1 100%;
+    -moz-box-flex: 1 1 100%;
+    -webkit-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
+    margin: 0;
+    height: auto;
+    min-width: 100%;
+    padding: 0 25px 50px;
+}
+.topic h2{
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    -ms-flex-pack: center;
+    flex-pack: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    -ms-flex-align: start;
+    flex-align: start;
+    -webkit-justify-content: flex-start;
+    -moz-justify-content: flex-start;
+    justify-content: flex-start;
+    -ms-flex-pack: start;
+    flex-pack: start;
+    font-size: 31px;
+    font-weight: 440;
+    color: #333;
+    text-transform: none;
+    position: relative;
+}
+.topic h2 a.topic-title{
+    margin-top: -95px;
+    padding-top: 95px;
+    
+}
+.profile-section .topic .content{
+/*
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    -ms-flex-pack: center;
+    flex-pack: center;
+*/
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    margin-top: 10px;
+
+}
+.profile-section .topic .content aside{
+    -webkit-box-flex: none;
+    -moz-box-flex: none;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+    max-width: 415px;
+    
+}
+.profile-section .topic:not(.flex) aside{
+    
+}
+/*echart大容器*/
+.profile-section .topic:not(.flex) .viz{
+    flex-grow: 1;
+    max-width: 715px;
+}
+/*每个section 的echart 容器*/
+.profile-section .echdiv{
+    width: 700x;
+    height: 250px;
+    
+}
+.echdiv{
+    
+}
+.profile-section .topic .content aside .topic-stats{
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    -ms-flex-pack: center;
+    flex-pack: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+    -ms-flex-align: end;
+    flex-align: end;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    color: #333;
+}
+.profile-section .topic .content aside .topic-stats .stat{
+    -webkit-box-flex: 1 1 auto;
+    -moz-box-flex: 1 1 auto;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    margin: 10px 15px 10px 0;
+    min-width: 40%;
+}
+.stat-value{
+    font-size: 30px;
+    font-weight: 300;
+    margin-bottom: 8px;
+}
+.stat-text{
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.5;
+    vertical-align: baseline;
+}
+
+.profile-section .topic .content aside p{
+    margin: 3px 0 12px;
+    width: 100%;
+    font-size: 15px;
+    line-height: 2;
+    font-weight: 400;
+    color: rgba(51, 51, 51, 0.93);
+}
+
+/*图标反色*/
+/* .splash-icon-nav img,.profile-toc-section img,#profile-nav img{
+    -webkit-filter:invert(1);
+    filter:invert(1);
+} */

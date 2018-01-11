@@ -1,0 +1,58 @@
+@media only screen and (max-width: 480px){
+    body.profile #splash {
+    width: 100%;
+    }
+    body.profile #splash .content{
+        padding: 40px 10px;
+    }
+    body.profile #splash .content #splash-stats {
+    margin: 20px 0 0;
+    }
+    body.profile #splash .content .splash-icon-nav {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 3vh;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    justify-content: space-between;
+    -ms-flex-pack: justify;
+    flex-pack: justify;
+    }
+/*    分项图栏*/
+/*    profile-section echart*/
+    .profile-section{
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .profile-section .topic:not(.flex) .viz{
+        width: 100%;
+    }
+}
+@media (max-width: 415px){
+    #menu {
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    justify-content: space-between;
+    -ms-flex-pack: justify;
+    flex-pack: justify;
+    width: 100vw;
+    left: -100vw;
+    top: 0;
+    height: 100vh;
+    -moz-transition: left 0.7s ease;
+    -o-transition: left 0.7s ease;
+    -webkit-transition: left 0.7s ease;
+    transition: left 0.7s ease;
+    }
+}
+/*about 十项栏*/
+@media only screen and (max-width: 768px){
+    body.profile .intro #profile-toc, body.story .intro #profile-toc {
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    }
+}

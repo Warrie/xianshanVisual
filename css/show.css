@@ -1,0 +1,166 @@
+
+body {
+    margin: 0 auto;
+    padding: 0 auto;
+    width: 100%;
+    color: #73879C;
+    font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+    font-size: 85%;
+    font-weight: 400;
+    line-height: 1.471;
+    background: #f7f7f7;
+}
+.clear {
+    clear: both;
+}
+h1{
+    text-align: center;
+    font-size: 50px;
+    padding: 2%;
+}
+.top_munu {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width:90%;
+    margin:2% auto;
+}
+
+.top_lattice {
+    margin-bottom: 1%;
+    border-bottom: 0;
+    padding: 0 0 0 3%;
+    text-overflow: ellipsis;
+    position: relative;
+    min-height: 0.00001%;
+    float: left;
+    width: 19.5%;
+    text-align: center;
+}
+.top_lattice span {
+   
+    font-size: 200%;
+}
+
+.score {
+    font-size: 270%;
+    line-height: 110%;
+    font-weight: 600;
+}
+.green {
+    color: #1ABB9C;
+}
+
+.line {
+    float: left;
+    width: 0.15%;
+    height: 73px;
+    margin-bottom: 1%;
+    background-color: #aaa;
+}
+
+
+#main {
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+#main h2{
+    text-align: center;
+    font-size: 30px;
+}
+
+.munu {
+    border: 2px solid #eee;
+    margin-bottom: 1%;
+    background-color: #fff;
+/*     float: left; */
+    border-radius: 5px;
+}
+#munu_economy{
+    float:left;
+    width: 100%;
+    height: 350px;
+    margin-bottom: 50px;
+}
+/*
+#munu_area{
+    float:left;
+    margin-left: 1%;
+    width: 67%;
+    height: 350px;
+}
+*/
+/*
+#munu_livelihood {
+ 	float:left;
+    width: 30%;
+    height: 350px;
+}
+
+#munu_department {
+	float:left;
+    margin-left: 1%;
+    width: 67%;
+    height: 350px;
+}
+*/
+
+#munu_energy_big {
+    margin-top: 30px;
+	clear:both;
+    height: 552px;
+    width:98%;
+    margin: 0 auto;
+    position:relative;
+    overflow-y:hidden;
+    overflow-x:hidden;
+}
+
+#munu_energy{
+	clear:both;
+    position:absolute;
+    left:25%;
+    top:77px;
+    z-index: 10;
+    background-color: White;
+    border-radius: 15px;
+    -webkit-box-shadow: 0 10px 10px rgba(0,0,0,0.5);
+    overflow:hidden;
+    height:400px;
+    width:50%;
+    /*margin: 75px auto 0px;*/
+
+}
+
+/*地图调*/
+
+
+
+/*#show_color {*/
+    /*background-color:#C71585,#DAA520,#696969,#00BFFF,#4169E1,#B0E0E6;}*/
+
+/*#show_color {*/
+    /*background-color: #f315ae, #ff8800, #4a4a4a, #0391ff, #3333d7,#B0E0E6;*/
+    /*background-color: #7eacb2;*/
+    /*background-color£º#666;*/
+/*}*/
+
+
+/*加客观图表*/
+.secContainer{
+    position:relative;
+
+}
+
+.secContainer header{
+    /*height:220px;*/
+    /*line-height:220px;*/
+}
+
+.echdiv{
+    /*top:50px;*/
+}

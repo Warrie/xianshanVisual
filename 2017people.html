@@ -1,0 +1,564 @@
+<!--
+@liqx
+基于云平台主观页面设计，展示2017象山数据，去掉部门
+-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>2017年象山民生性问卷分析</title>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <link type="text/css" rel="stylesheet" href="css/show.css">
+    <!--    <link type="text/css" rel="stylesheet" href="css/d3style.css">-->
+    <link type="text/css" rel="stylesheet" href="css/2017erlei_style1.css">
+    <link type="text/css" rel="stylesheet" href="css/media.css">
+
+    <script src="js/jquery.min.js"></script>
+
+    <script src="js/echarts.min.js"></script>
+    <script src="js/d3.min.js"></script>
+</head>
+<body class="profile">
+<!-- <div style="float:right;margin-right: 20%;font-size: 17px">
+            <label>查看其他分析</label> 
+            <select  onchange="locationTo(this)">
+            <option value="/IntelligentDecision-web/showSample/satisfy_pie.html?questionnaireid=1&id=3">满意度分析</option> 
+                <option value="/IntelligentDecision-web/showSample/otherQuestion_pie.html?questionnaireid=1&id=3">其他问题分析</option> 
+                <option value="/IntelligentDecision-web/showSample/showSample_pie.html?questionnaireid=1&id=3">被调查人员信息分析</option> 
+                <option value="/IntelligentDecision-web/showSample/show.html">2016年总分析</option>
+                <option value="/IntelligentDecision-web/2017/2017people.html">2017年总分线</option>
+              
+            </select> 
+    </div> -->
+<h1>2017年象山民生性问卷分析</h1>
+<!--问卷总体情况-->
+<div class="top_munu">
+    <div class="top_lattice" >
+        <span >民生性公共服务总体评分：</span>
+        <div class="score" >77.69<!-- <i class="glyphicon glyphicon-arrow-down"></i> --></div>
+    </div>
+    <div class="line"></div>
+    <div class="top_lattice" >
+        <span >大类服务满意度平均分：</span>
+        <div class="score" >79.72<!-- <i class="glyphicon glyphicon-arrow-down"></i> --></div>
+        <!--   <span  ><i class="green">3%</i>From Last Week</span>-->
+    </div>
+    <div class="line"></div>
+
+    <div class="top_lattice" >
+        <span >大类服务排名第一：</span>
+        <div class="score" >公共教育</div>
+        <span  >得分（<i class="green">82.23</i>）</span>
+    </div>
+    <div class="line"></div>
+
+    <!--
+        <div class="top_lattice" style="width: 15%;">
+            <span >部门平均得分：</span>
+            <div class="score" >85.51</div>
+        </div>
+        <div class="line"></div>
+
+        <div class="top_lattice" style="width: 15%;">
+            <span >部门排名第一：</span>
+            <div class="score" >县风景旅游局</div>
+            <span  >得分（<i class="green">90.24</i>）</span>
+        </div>
+        <div class="line"></div>
+    -->
+    <div class="top_lattice" >
+        <span >问卷面向：</span>
+        <div class="score" >民众</div>
+    </div>
+    <div class="line"></div>
+    <div class="top_lattice" >
+        <span >问卷数目：</span>
+        <div class="score" >3450</div>
+    </div>
+</div>
+
+<!--三块主要绘图区-->
+<div id="main">
+    <!--    总体升降-->
+    <div class="munu" id="munu_economy">
+    </div>
+    <!--
+        <div class="munu" id="munu_department">
+        </div>
+    -->
+    <!--乡镇切换对比功能-->
+    <!--
+        <div class="munu" id="munu_area">
+        </div>
+    -->
+
+    <!--
+        <div id="big_line">
+            <svg id="big_line_svg"></svg>
+        </div>
+    -->
+    <!--   地区雷达图-->
+    <h2>地区长短板</h2>
+    <div class="munu" id="munu_energy_big" >
+
+
+    </div>
+
+</div>
+
+<!--二类服务展开-->
+<div>
+    <!--滚动出现十二大导航条-->
+    <div id="nav-bar-scroll">
+        <div id="profile-nav" class="">
+            <ul class="pri-menu">
+                <a href="#gy1" data-ga="subnav economy" data-ga-cat="navigation" data-ga-label="User click"><li data-anchor="economy" class="pri-link"><img src="./images/people/jy1.png">
+                    <span>公共教育</span></li></a>
+                <a href="#jzy2" data-ga="subnav health" data-ga-cat="navigation" data-ga-label="User click"><li data-anchor="health" class="pri-link"><img src="./images/people/jy2.png">
+                    <span>就业与社会保险</span></li></a>
+                <a href="#fwy3" data-ga="subnav demographics" data-ga-cat="navigation" data-ga-label="User click"><li data-anchor="demographics" class="pri-link"><img src="./images/people/yl3.png">
+                    <span>医疗卫生</span></li></a>
+                <a href="#ny4" data-ga="subnav education" data-ga-cat="navigation" data-ga-label="User click"><li data-anchor="education" class="pri-link"><img src="./images/people/mz4.png">
+                    <span>民政服务</span></li></a>
+                <a href="#yy5" data-ga="subnav housing" data-ga-cat="navigation" data-ga-label="User click"><li data-anchor="housing" class="pri-link"><img src="./images/people/zf5.png">
+                    <span>住房保障</span></li></a>
+                <a href="#sp6" data-ga="subnav housing" data-ga-cat="navigation" data-ga-label="User click"><li data-anchor="housing" class="pri-link"><img src="./images/people/wh6.png">
+                    <span>文化惠民</span></li></a>
+                <a href="#zs7" data-ga="subnav housing" data-ga-cat="navigation" data-ga-label="User click"><li data-anchor="housing" class="pri-link"><img src="./images/people/pa7.png">
+                    <span>平安象山建设</span></li></a>
+                <a href="#cx8" data-ga="subnav housing" data-ga-cat="navigation" data-ga-label="User click"><li data-anchor="housing" class="pri-link"><img src="./images/people/fl8.png">
+                    <span>法律服务</span></li></a>
+                <a href="#rc9" data-ga="subnav housing" data-ga-cat="navigation" data-ga-label="User click"><li data-anchor="housing" class="pri-link"><img src="./images/people/sp9.png">
+                    <span>便民审批服务</span></li></a>
+                <a href="#sc10" data-ga="subnav housing" data-ga-cat="navigation" data-ga-label="User click"><li data-anchor="housing" class="pri-link"><img src="./images/people/st10.png">
+                    <span>生态环保</span></li></a>
+                <a href="#jr11" data-ga="subnav housing" data-ga-cat="navigation" data-ga-label="User click"><li data-anchor="housing" class="pri-link"><img src="./images/people/cs11.png">
+                    <span>城市管理与基础设施</span></li></a>
+                <a href="#ly12" data-ga="subnav housing" data-ga-cat="navigation" data-ga-label="User click"><li data-anchor="housing" class="pri-link"><img src="./images/people/xc12.png">
+                    <span>美丽乡村建设</span></li></a>
+
+            </ul>
+ <!--           <a href="https://datausa.io/profile/geo/new-york-ny/#top" id="back-to-top">
+                <span>Back to top</span>
+                <i class="fa fa-caret-up"></i>
+            </a>
+ -->
+        </div>
+    </div>
+    <!--侧边滚动条栏 #section-sidenav-->
+
+    <!--返回顶部箭头-->
+    <a id="scrollup" href="#top" style="position:fixed;z-index: 999;display: block;">^</a>
+    <!--各个模块-->
+    <header class="bcolor0 prof-body">
+        <h2 class="section-title"><a name="gy1">公共教育</a></h2>
+    </header>
+    <section class="bcolor0 profile-section">
+        <!--        <h1 class="category"><a href="#category_1" name="category_1">第三产业</a></h1>-->
+        <article class="topic">
+            <h2 class="embed-title">
+                <a href="#sec1_1" class="topic-title" name="sec1_1"></a>
+            </h2>
+            <div class="content">
+                <aside>
+                    <div class="topic-stats">
+                        <div class="stat">
+                            <div class="stat-value"><span class="stat-right"></span>
+                            </div>
+                            <div class="stat-text"><span class="stat-span" >2017年值</span> </div>
+                        </div>
+                    </div>
+                    <p>其中二类服务得分排名<span class="stat-span" >为义务教育,学前教育,普通高中教育,职业教育,成人教育</span>。表格显示二类服务具体得分情况。</p>
+                </aside>
+                <div class="viz main bar">
+                    <div class="echdiv" id="secEch1_1" >
+
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+    <header class="bcolor1 prof-body">
+        <h2 class="section-title"><a  name="jzy2">就业与社会保险</a></h2>
+    </header>
+    <section class="bcolor1 profile-section">
+        <article class="topic">
+            <h2 class="embed-title">
+                <a href="#sec1_1" class="topic-title" name="sec1_1"></a>
+            </h2>
+            <div class="content">
+                <aside>
+                    <div class="topic-stats">
+                        <div class="stat">
+                            <div class="stat-value"><span class="stat-right"></span>
+                            </div>
+                            <div class="stat-text"><span class="stat-span" >2017年值</span> </div>
+                        </div>
+                    </div>
+                    <p>其中二类服务得分排名为<span class="stat-span" >保险服务,就业信息与就业指导,失业人员服务,退休人员社会化服务管理,就业困难援助</span>。表格显示二类服务具体得分情况。</p>
+                </aside>
+                <div class="viz main bar">
+                    <div class="echdiv" id="secEch2_1" >
+
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+    <header class="bcolor0 prof-body">
+        <h2 class="section-title"><a  name="fwy3">医疗卫生</a></h2>
+    </header>
+    <section class="bcolor0 profile-section">
+        <article class="topic">
+            <h2 class="embed-title">
+                <a href="#sec3_1" class="topic-title" name="sec3_1"></a>
+            </h2>
+            <div class="content">
+                <aside>
+                    <div class="topic-stats">
+                        <div class="stat">
+                            <div class="stat-value"><span class="stat-right"></span>
+                            </div>
+                            <div class="stat-text"><span class="stat-span" >2017年值</span> </div>
+                        </div>
+                    </div>
+                    <p>其中二类服务得分排名为<span class="stat-span" >基本公共卫生服务,健康教育,优生优育服务,医疗水平及就医环境</span>。表格显示二类服务具体得分情况。</p>
+                </aside>
+                <div class="viz main bar">
+                    <div class="echdiv" id="secEch3_1" >
+
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+    <header class="bcolor1 prof-body">
+        <h2 class="section-title"><a  name="ny4">民政服务</a></h2>
+    </header>
+    <section class="bcolor1 profile-section">
+        <article class="topic">
+            <h2 class="embed-title">
+                <a href="#sec4_1" class="topic-title" name="sec4_1"></a>
+            </h2>
+            <div class="content">
+                <aside>
+                    <div class="topic-stats">
+                        <div class="stat">
+                            <div class="stat-value"><span class="stat-right"></span>
+                            </div>
+                            <div class="stat-text"><span class="stat-span" >2017年值</span> </div>
+                        </div>
+                    </div>
+                    <p>其中二类服务得分排名为<span class="stat-span" >养老服务,社区服务,救灾救济,婚姻登记,殡葬服务,双拥优抚</span>。表格显示二类服务具体得分情况。</p>
+                </aside>
+                <div class="viz main bar">
+                    <div class="echdiv" id="secEch4_1" >
+
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+    <header class="bcolor0 prof-body">
+        <h2 class="section-title"><a name="yy5">住房保障</a></h2>
+    </header>
+    <section class="bcolor0 profile-section">
+        <article class="topic">
+            <h2 class="embed-title">
+                <a href="#sec5_1" class="topic-title" name="sec5_1"></a>
+            </h2>
+            <div class="content">
+                <aside>
+                    <div class="topic-stats">
+                        <div class="stat">
+                            <div class="stat-value"><span class="stat-right"></span>
+                            </div>
+                            <div class="stat-text"><span class="stat-span" >2017年值</span> </div>
+                        </div>
+                    </div>
+                    <p>其中二类服务得分排名为<span class="stat-span" >经济适用房,棚户区改造,公租房（廉租房）,住房保障工作的资格审查,限价房</span>。表格显示二类服务具体得分情况。</p>
+                </aside>
+                <div class="viz main bar">
+                    <div class="echdiv" id="secEch5_1" >
+
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+    <header class="bcolor1 prof-body">
+        <h2 class="section-title"><a  name="sp6">文化惠民</a></h2>
+    </header>
+    <section class="bcolor1 profile-section">
+        <article class="topic">
+            <h2 class="embed-title">
+                <a href="#sec6_1" class="topic-title" name="sec6_1"></a>
+            </h2>
+            <div class="content">
+                <aside>
+                    <div class="topic-stats">
+                        <div class="stat">
+                            <div class="stat-value"><span class="stat-right"></span>
+                            </div>
+                            <div class="stat-text"><span class="stat-span" >2017年值</span> </div>
+                        </div>
+                    </div>
+                    <p>其中二类服务得分排名为<span class="stat-span" >群众文化活动开展,文化遗产传承与保护,文化设施建设与免费开放,广播电视服务,支持民间文艺人才发展</span>。表格显示二类服务具体得分情况。</p>
+                </aside>
+                <div class="viz main bar">
+                    <div class="echdiv" id="secEch6_1" >
+
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+    <header class="bcolor0 prof-body">
+        <h2 class="section-title"><a  name="zs7">平安象山建设</a></h2>
+    </header>
+    <section class="bcolor0 profile-section">
+        <article class="topic">
+            <h2 class="embed-title">
+                <a href="#sec7_1" class="topic-title" name="sec7_1"></a>
+            </h2>
+            <div class="content">
+                <aside>
+                    <div class="topic-stats">
+                        <div class="stat">
+                            <div class="stat-value"><span class="stat-right"></span>
+                            </div>
+                            <div class="stat-text"><span class="stat-span" >2017年值</span> </div>
+                        </div>
+                    </div>
+                    <p>其中二类服务得分排名为<span class="stat-span" >社会治安管理,社会志愿服务,流动人口服务管理,信访服务</span>。表格显示二类服务具体得分情况。</p>
+                </aside>
+                <div class="viz main bar">
+                    <div class="echdiv" id="secEch7_1" >
+
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+    <header class="bcolor1 prof-body">
+        <h2 class="section-title"><a  name="cx8">法律服务</a></h2>
+    </header>
+    <section class="bcolor1 profile-section">
+        <article class="topic">
+            <h2 class="embed-title">
+                <a href="#sec8_1" class="topic-title" name="sec8_1"></a>
+            </h2>
+            <div class="content">
+                <aside>
+                    <div class="topic-stats">
+                        <div class="stat">
+                            <div class="stat-value"><span class="stat-right"></span>
+                            </div>
+                            <div class="stat-text"><span class="stat-span" >2017年值</span> </div>
+                        </div>
+                    </div>
+                    <p>其中二类服务得分排名为<span class="stat-span" >普法宣传,人民调解,法律援助,法律咨询,公证</span>。表格显示二类服务具体得分情况。</p>
+                </aside>
+                <div class="viz main bar">
+                    <div class="echdiv" id="secEch8_1" >
+
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+    <header class="bcolor0 prof-body">
+        <h2 class="section-title"><a name="rc9">便民审批服务</a></h2>
+    </header>
+    <section class="bcolor0 profile-section">
+        <article class="topic">
+            <h2 class="embed-title">
+                <a href="#sec9_1" class="topic-title" name="sec9_1"></a>
+            </h2>
+            <div class="content">
+                <aside>
+                    <div class="topic-stats">
+                        <div class="stat">
+                            <div class="stat-value"><span class="stat-right"></span>
+                            </div>
+                            <div class="stat-text"><span class="stat-span" >2017年值</span> </div>
+                        </div>
+                    </div>
+                    <p>其中二类服务得分排名为<span class="stat-span" >社会保险办理,户籍出入境等证件办理,不动产权证办理,住房保障办理,车辆、船舶登记,住房公积金贷款和提取,婚育收养</span>。表格显示二类服务具体得分情况。</p>
+                </aside>
+                <div class="viz main bar">
+                    <div class="echdiv" id="secEch9_1" >
+
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+    <header class="bcolor1 prof-body">
+        <h2 class="section-title"><a  name="sc10">生态环保</a></h2>
+    </header>
+    <section class="bcolor1 profile-section">
+        <article class="topic">
+            <h2 class="embed-title">
+                <a href="#sec10_1" class="topic-title" name="sec10_1"></a>
+            </h2>
+            <div class="content">
+                <aside>
+                    <div class="topic-stats">
+                        <div class="stat">
+                            <div class="stat-value"><span class="stat-right"></span>
+                            </div>
+                            <div class="stat-text"><span class="stat-span" >2017年值</span> </div>
+                        </div>
+                    </div>
+                    <p>其中二类服务得分排名为<span class="stat-span" >水环境保护（五水共治）,民居环境整治,海洋环境保护,大气环境保护,土壤环境保护</span>。表格显示二类服务具体得分情况。</p>
+                </aside>
+                <div class="viz main bar">
+                    <div class="echdiv" id="secEch10_1" >
+
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+    <header class="bcolor0 prof-body">
+        <h2 class="section-title"><a name="jr11">城市管理与基础设施</a></h2>
+    </header>
+    <section class="bcolor0 profile-section">
+        <article class="topic">
+            <h2 class="embed-title">
+                <a href="#sec9_1" class="topic-title" name="sec9_1"></a>
+            </h2>
+            <div class="content">
+                <aside>
+                    <div class="topic-stats">
+                        <div class="stat">
+                            <div class="stat-value"><span class="stat-right"></span>
+                            </div>
+                            <div class="stat-text"><span class="stat-span" >2017年值</span> </div>
+                        </div>
+                    </div>
+                    <p>其中二类服务得分排名为<span class="stat-span" >公共交通,环卫,市容市貌,通信设施,照明设施改造,水电气设施,无障碍设施</span>。表格显示二类服务具体得分情况。</p>
+                </aside>
+                <div class="viz main bar">
+                    <div class="echdiv" id="secEch11_1" >
+
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+    <header class="bcolor1 prof-body">
+        <h2 class="section-title"><a  name="ly12">美丽乡村建设</a></h2>
+    </header>
+    <section class="bcolor1 profile-section">
+        <article class="topic">
+            <h2 class="embed-title">
+                <a href="#sec10_1" class="topic-title" name="sec10_1"></a>
+            </h2>
+            <div class="content">
+                <aside>
+                    <div class="topic-stats">
+                        <div class="stat">
+                            <div class="stat-value"><span class="stat-right"></span>
+                            </div>
+                            <div class="stat-text"><span class="stat-span" >2017年值</span> </div>
+                        </div>
+                    </div>
+                    <p>其中二类服务得分排名为<span class="stat-span" >农村生活污水处理,古村落保护,村村通,农村生活垃圾分类处理,规模化畜禽养殖污染治理,无害化卫生厕所普及</span>。表格显示二类服务具体得分情况。</p>
+                </aside>
+                <div class="viz main bar">
+                    <div class="echdiv" id="secEch12_1" >
+
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+
+</div>
+
+
+<!--<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>-->
+<script type="text/javascript">
+    //全局变量，标志民生 
+    var EORL=1;
+</script>
+<script src="./js/data2017.js"></script>
+<script src="./js/leaflet.js"></script>
+<script src="./js/chart_function.js"></script>
+<script src="./js/munu_people.js"></script>
+<!-- <script src="js/script.js"></script>  -->
+<script type="text/javascript">
+    window.onscroll= function(){
+        //变量t是滚动条滚动时，距离顶部的距离
+        var y = document.documentElement.scrollTop||document.body.scrollTop;
+        var scrollup = document.getElementById('scrollup');
+        //当滚动到距离顶部200px时，返回顶部的锚点显示
+        if(y>=200){
+            scrollup.style.display="block";
+        }else{          //恢复正常
+            scrollup.style.display="none";
+        }
+        //top-nav
+        var splashHeight = d3.select("h1").node().offsetHeight,
+            boundHeight = d3.select(".top_munu").node().offsetHeight,
+            titleNavHeight = d3.select("#main").node().offsetHeight,
+            statNavHeight = d3.select("#stats-bar").size() ? d3.select("#stats-bar").node().offsetHeight : 0,
+            profNavHeight = d3.select("#profile-nav").node().offsetHeight,
+            attr_type = "geo";
+
+        var colorTitleNav = y >titleNavHeight,
+            showTitleNav = y > splashHeight/2.75,
+            showStatNav = y > splashHeight,
+            showProfNav = y > (boundHeight + titleNavHeight + splashHeight-20);
+
+        d3.select("#top-nav").classed("filled", colorTitleNav);
+        d3.select("nav").classed("filled", colorTitleNav);
+        d3.select("#title-bar").classed("visible", showTitleNav);
+        d3.select("#home-btn").classed("hidden", showTitleNav);
+
+        d3.select("#stats-bar").classed("visible", showProfNav);
+        d3.select(".expand-stats-btn").classed("show", showProfNav);
+        d3.select("#profile-nav").classed("visible", showProfNav);
+        d3.select("#section-sidenav").classed("visible", showProfNav);
+    }
+</script>
+<script src="js/second_server_peo.js"></script>
+<script src="js/town_data.js"></script>
+<script src="./js/getresult.js"></script>
+<script type="text/javascript" src="./js/xiangshan.js" charset="utf-8" ></script>
+<script type="text/javascript" src="./js/mapmain.js"  charset="utf-8" ></script>
+<script type="text/javascript" src="./js/map2017.js"  charset="utf-8" ></script>
+<script src="js/energy.js"></script>
+<!--页面加载先加载一次SHOW('象山县'，0)-->
+<script type="text/javascript">
+    SHOW('象山县',1);
+</script>
+<!--
+<script src="./show_function.js" ></script>
+<script src="./show.js" ></script>
+-->
+<!--
+<script type="text/javascript" src="./xiangshan.js" charset="utf-8" ></script>
+<script type="text/javascript" src="./mapmain.js"  charset="utf-8" ></script>
+<script type="text/javascript" src="./map.js"  charset="utf-8" ></script>
+<script src="./showdepartment.js" ></script>
+<script src="./energy.js" ></script>
+-->
+<script type="text/javascript">
+
+                    function locationTo(sobj) {
+                    var docurl =sobj.options[sobj.selectedIndex].value;
+                    if (docurl != "") {
+                       open(docurl,'_self');
+                       sobj.selectedIndex=0;
+                       sobj.blur();
+                    }
+                    }
+
+ </script>
+
+</body>
+</html>
